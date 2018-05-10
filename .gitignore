@@ -1,11 +1,12 @@
 LICENSE.txt
 lib/
-log4j2.xml/
+log4j2.xml
+perfcake-validation.log
 bin/
 docs/
 resources/keystrores/
-messages/examples/
-scenarios/examples/
-schemas/
-xslt/
+resources/messages/examples/
+resources/scenarios/examples/
+resources/schemas/
+resources/xslt/
 
