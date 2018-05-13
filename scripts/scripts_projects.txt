@@ -1,0 +1,14 @@
+./bin/perfcake.sh -s projects/CreateProjectsSequence_OrganizationSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+
+./bin/perfcake.sh -s projects/GetProjectsAll_OrganizationSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
+./bin/perfcake.sh -s projects/GetProjectsSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
+./bin/perfcake.sh -s projects/GetProjectsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s projects/GetProjectsSinglePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
+./bin/perfcake.sh -s projects/GetProjectsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+
+./bin/perfcake.sh -s projects/UpdateProjectsSingle_OrganizationSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
+./bin/perfcake.sh -s projects/UpdateProjectsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s projects/UpdateProjectsSinglePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
+./bin/perfcake.sh -s projects/UpdateProjectsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+
+./bin/perfcake.sh -s projects/DeleteProjectsSequence_OrganizationSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30

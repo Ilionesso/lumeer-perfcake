@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <scenario xmlns="urn:perfcake:scenario:7.0">
-    <run type="iteration" value="1000"/>
+    <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
-                  threads="${thread.count:10}"/>
+               threads="${thread.count:10}">
+        <property name = "senderTaskQueueSize" value="3"/>
+    </generator>
+
     <sequences>
         <sequence class="PrimitiveNumberSequence" id="num" />
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/rest/organizations/</target>
+        <target>http://${server.host}/rest/organizations/DefCode/projects</target>
         <property name="method" value="POST"/>
     </sender>
 
@@ -18,10 +21,14 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Organization collection - create - Response Time - Thread Count: ${thread.count}"/>
+                <property name="name" value="Sequence of projects in a single organization -
+                                                Create -
+                                                Response Time -
+                                                Thread Count: ${thread.count:10} -
+                                                Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/responseTime/organization"/>
+                <property name="outputDir" value="${charts.dir:charts/projects}/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -32,16 +39,20 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Organization collection - create - Throughput stats - Thread Count: ${thread.count}"/>
+                <property name="name" value="Sequence of projects in a single organization -
+                                                Create -
+                                                Throughput Stats -
+                                                Thread Count: ${thread.count:10} -
+                                                Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/throughputStats/organization"/>
+                <property name="outputDir" value="${charts.dir:charts/projects}/throughputStats"/>
             </destination>
         </reporter>
     </reporting>
 
     <messages>
-        <message content ='{"code":"DefCode@{num}","name":"DefName@{num}","icon":"DefUrl","color":"DefCol","permissions":null}'>
+        <message content ='{"code":"DefProjectCode@{num}","name":"DefProjectName@{num}","icon":"DefProjectUrl","color":"DefProjectCol","permissions":null}'>
             <header name="Content-Type" value="application/json"/>
         </message>
     </messages>

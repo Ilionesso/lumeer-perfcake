@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <scenario xmlns="urn:perfcake:scenario:7.0">
-    <run type="iteration" value="1000"/>
+    <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
                   threads="${thread.count:10}"/>
     <sequences>
@@ -8,9 +8,10 @@
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/organizations/DefCode@{num}/permissions/users</target>
+        <target>http://${server.host}/organizations/DefCode@{num}/permissions</target>
         <property name="keepConnection"  value ="false"/>
-        <property name="method" value="PUT"/>
+        <property name="method" value="GET"/>
+
     </sender>
 
     <reporting>
@@ -19,10 +20,14 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Organisation.User collection (permissions) - updates - Response Time"/>
+                <property name="name" value="Each organization from collection (permissions) -
+                                                Get -
+                                                Response Time -
+                                                Thread Count: ${thread.count:10} -
+                                                Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/responseTime/organization"/>
+                <property name="outputDir" value="${charts.dir:charts/organizations}/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -33,35 +38,24 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Organisation.User collection (permissions) - updates - Throughput stats - Thread Count: ${thread.count}"/>
+                <property name="name" value="Each organization from collection (permissions) -
+                                                Get -
+                                                Throughput stats -
+                                                Thread Count: ${thread.count:10} -
+                                                Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/throughputStats/organization"/>
+                <property name="outputDir" value="${charts.dir:charts/organizations}/throughputStats"/>
             </destination>
         </reporter>
     </reporting>
 
     <messages>
-        <message content ='{
-                "name": "aturing@lumeer.io",
-                "roles": [
-                    "READ",
-                    "MANAGE"
-                    ]
-                }'>
+        <message content="{}">
             <header name="Content-Type" value="application/json"/>
         </message>
-        <!--<message content ='{-->
-                <!--"name": "aturing@lumeer.io",-->
-                <!--"roles": [-->
-                    <!--"READ",-->
-                    <!--"MANAGE",-->
-                    <!--"WRITE"-->
-                    <!--]-->
-                <!--}'>-->
-            <!--<header name="Content-Type" value="application/json"/>-->
-        <!--</message>-->
     </messages>
+
 
 
 

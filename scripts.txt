@@ -1,9 +1,0 @@
-./bin/perfcake.sh -s CreateOrganizations.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10
-./bin/perfcake.sh -s GetOrganizations.xml -Dserver.host=localhost:8080/lumeer-engine
-./bin/perfcake.sh -s UpdateOrganizationsSingle.xml -Dserver.host=localhost:8080/lumeer-engine
-./bin/perfcake.sh -s UpdateOrganizationsMultiple.xml -Dserver.host=localhost:8080/lumeer-engine
-./bin/perfcake.sh -s UpdatePermissionsSingle.xml -Dserver.host=localhost:8080/lumeer-engine
-./bin/perfcake.sh -s UpdatePermissionsMultiple.xml -Dserver.host=localhost:8080/lumeer-engine
-./bin/perfcake.sh -s GetPermissionsSingle.xml -Dserver.host=localhost:8080/lumeer-engine
-./bin/perfcake.sh -s GetPermissionsMultiple.xml -Dserver.host=localhost:8080/lumeer-engine
-./bin/perfcake.sh -s DeleteOrganizations.xml -Dserver.host=localhost:8080/lumeer-engine
