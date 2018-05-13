@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <scenario xmlns="urn:perfcake:scenario:7.0">
-    <run type="iteration" value="${iterations.count:5000}"/>
+    <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
                   threads="${thread.count:10}"/>
     <sequences>
@@ -8,8 +8,9 @@
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/organizations/DefCode</target>
-        <property name="method" value="PUT"/>
+        <target>http://${server.host}/organizations/DefCode/projects/DefProjectCode@{num}/collections/DefColCode</target>
+        <property name="keepConnection"  value ="false"/>
+        <property name="method" value="DELETE"/>
     </sender>
 
     <reporting>
@@ -18,14 +19,14 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Single organization -
-                                                Update -
+                <property name="name" value="Single collection in a sequence of projects -
+                                                Delete -
                                                 Response Time -
                                                 Thread Count: ${thread.count:10} -
-                                                Iterations: ${iterations.count:5000}"/>
+                                                Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/organizations}/responseTime"/>
+                <property name="outputDir" value="${charts.dir:charts/projects}/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -36,25 +37,26 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Single organization -
-                                                Update -
-                                                Throughput Stats -
+                <property name="name" value="Single collection in a sequence of projects -
+                                                Delete -
+                                                Throughput stats -
                                                 Thread Count: ${thread.count:10} -
-                                                Iterations: ${iterations.count:5000}"/>
+                                                Iterations: ${iterations.count:1000}"/>
+                <property name="yAxis" value="Iteration/sec"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/organizations}/throughputStats"/>
+                <property name="outputDir" value="${charts.dir:charts/projects}/throughputStats"/>
             </destination>
         </reporter>
     </reporting>
 
     <messages>
-        <message content ='{"code":"DefCodeAlter","name":"DefNameAlter","icon":"DefUrlAlter","color":"DefColorAlter","permissions":null}'>
-            <header name="Content-Type" value="application/json"/>
-        </message>
-        <message content ='{"code":"DefCode","name":"DefName","icon":"DefUrl","color":"DefColor","permissions":null}'>
+        <message content="{}">
             <header name="Content-Type" value="application/json"/>
         </message>
     </messages>
+
+
+
 
 </scenario>

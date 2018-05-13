@@ -50,7 +50,7 @@
     </reporting>
 
     <messages>
-        <message content ='{"code":"DefProjectCode","name":"DefProjectNameAlter","icon":"DefProjectUrlAlter","color":"DefProjectColAlter","permissions":null}'>
+        <message content ='{"code":"DefProjectCode","name":"DefProjectNameAlter","icon":"DefProjectUrlAlter","color":"DefProjectColorAlter","permissions":null}'>
             <header name="Content-Type" value="application/json"/>
         </message>
     </messages>
