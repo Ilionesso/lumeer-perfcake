@@ -2,18 +2,19 @@
 <scenario xmlns="urn:perfcake:scenario:7.0">
     <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
-               threads="${thread.count:10}">
-        <property name = "senderTaskQueueSize" value="3"/>
-    </generator>
-
+                  threads="${thread.count:10}"/>
     <sequences>
-        <sequence class="PrimitiveNumberSequence" id="num" />
+        <sequence class="FileLinesSequence" id="methodId">
+            <property name="fileUrl" value="resources/sequences/post-delete_methods.txt" />
+        </sequence>
+        <sequence class="FileLinesSequence" id="urlAppendix">
+            <property name="fileUrl" value="resources/sequences/organizations_post-delete_url.txt" />
+        </sequence>
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/rest/organizations/DefCode@{num}/projects</target>
-        <property name="keepConnection"  value ="false"/>
-        <property name="method" value="POST"/>
+        <target>http://${server.host}/rest/organizations/@{urlAppendix}</target>
+        <property name="keepConnection" value ="false"/>
     </sender>
 
     <reporting>
@@ -22,14 +23,14 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Single project in a sequence of organizations -
+                <property name="name" value="Each organization from collection -
                                                 Create -
                                                 Response Time -
                                                 Thread Count: ${thread.count:10} -
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/projects}/responseTime"/>
+                <property name="outputDir" value="${charts.dir:charts}/organizations/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -40,21 +41,26 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Single project in a sequence of organizations -
+                <property name="name" value="Each organization from collection -
                                                 Create -
                                                 Throughput Stats -
                                                 Thread Count: ${thread.count:10} -
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/projects}/throughputStats"/>
+                <property name="outputDir" value="${charts.dir:charts}/organizations/throughputStats"/>
             </destination>
         </reporter>
     </reporting>
 
     <messages>
-        <message content ='{"code":"DefProjectCode","name":"DefProjectName","icon":"DefProjectUrl","color":"DefProjectColor","permissions":null}'>
+        <message content ='{"code":"DefMixedCode","name":"DefName","icon":"DefUrl","color":"DefColor","permissions":null}'>
             <header name="Content-Type" value="application/json"/>
+            <header name="HTTPmethod" value="POST" />
+        </message>
+        <message content ='{}'>
+            <header name="Content-Type" value="application/json"/>
+            <header name="HTTPmethod" value="DELETE" />
         </message>
     </messages>
 

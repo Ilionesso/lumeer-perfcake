@@ -1,25 +1,25 @@
-./bin/perfcake.sh -s projects/CreateCollectionsSequence_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/CreateCollectionsSequence_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
 
-./bin/perfcake.sh -s projects/GetCollectionsAll_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
-./bin/perfcake.sh -s projects/GetCollectionsSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
-./bin/perfcake.sh -s projects/GetCollectionsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
-./bin/perfcake.sh -s projects/GetCollectionsSinglePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
-./bin/perfcake.sh -s projects/GetCollectionsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/GetCollectionsAll_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
+./bin/perfcake.sh -s collections/GetCollectionsSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
+./bin/perfcake.sh -s collections/GetCollectionsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/GetCollectionsSinglePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
+./bin/perfcake.sh -s collections/GetCollectionsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
 
-./bin/perfcake.sh -s projects/UpdateCollectionsSingle_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
-./bin/perfcake.sh -s projects/UpdateCollectionsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
-./bin/perfcake.sh -s projects/UpdateCollectionsSinglePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
-./bin/perfcake.sh -s projects/UpdateCollectionsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/UpdateCollectionsSingle_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
+./bin/perfcake.sh -s collections/UpdateCollectionsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/UpdateCollectionsSinglePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
+./bin/perfcake.sh -s collections/UpdateCollectionsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
 
-./bin/perfcake.sh -s projects/DeleteCollectionsSequence_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/DeleteCollectionsSequence_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
 
 
 #WITH SEQUENCE OF PROJECTS
 
-./bin/perfcake.sh -s projects/CreateCollectionsSingle_ProjectSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/CreateCollectionsSingle_ProjectSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
 
-./bin/perfcake.sh -s projects/GetCollectionsAll_ProjectSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/GetCollectionsAll_ProjectSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
 
-./bin/perfcake.sh -s projects/UpdateCollectionsSingle_ProjectSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/UpdateCollectionsSingle_ProjectSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
 
-./bin/perfcake.sh -s projects/DeleteCollectionsSequence_OrganizationSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s collections/DeleteCollectionsSingle_OrganizationSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30

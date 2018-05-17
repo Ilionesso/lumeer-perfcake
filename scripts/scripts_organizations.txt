@@ -2,13 +2,17 @@
 
 ./bin/perfcake.sh -s organizations/GetOrganizationsAll.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=500
 ./bin/perfcake.sh -s organizations/GetOrganizationsSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
-./bin/perfcake.sh -s organizations/GetOrganizationsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
+./bin/perfcake.sh -s organizations/GetOrganizationsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=5000
 ./bin/perfcake.sh -s organizations/GetOrganizationsSinglePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
-./bin/perfcake.sh -s organizations/GetOrganizationsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
+./bin/perfcake.sh -s organizations/GetOrganizationsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=5000
 
 ./bin/perfcake.sh -s organizations/UpdateOrganizationsSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
-./bin/perfcake.sh -s organizations/UpdateOrganizationsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
+./bin/perfcake.sh -s organizations/UpdateOrganizationsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=5000
 ./bin/perfcake.sh -s organizations/UpdateOrganizationsSinglePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=10000
-./bin/perfcake.sh -s organizations/UpdateOrganizationsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
+./bin/perfcake.sh -s organizations/UpdateOrganizationsSequencePermissions.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=5000
 
-./bin/perfcake.sh -s organizations/DeleteOrganizationsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=5000
+./bin/perfcake.sh -s organizations/DeleteOrganizationsSequence.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
+
+#MIXED
+
+./bin/perfcake.sh -s organizations/Mixed_CreateDelete_OrganizationsSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=5 -Diterations.count=5

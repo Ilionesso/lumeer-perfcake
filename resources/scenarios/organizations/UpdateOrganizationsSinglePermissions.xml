@@ -8,7 +8,7 @@
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/organizations/DefCode/permissions/users</target>
+        <target>http://${server.host}/rest/organizations/DefCode/permissions/users</target>
         <property name="method" value="PUT"/>
     </sender>
 
@@ -25,7 +25,7 @@
                                                 Iterations: ${iterations.count:5000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/organizations}/responseTime"/>
+                <property name="outputDir" value="${charts.dir:charts}/organizations/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -43,7 +43,7 @@
                                                 Iterations: ${iterations.count:5000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/organizations}/throughputStats"/>
+                <property name="outputDir" value="${charts.dir:charts}/organizations/throughputStats"/>
             </destination>
         </reporter>
     </reporting>
@@ -53,7 +53,9 @@
                 "name": "aturing@lumeer.io",
                 "roles": [
                     "READ",
-                    "MANAGE"
+                    "MANAGE",
+                    "WRITE",
+                    "SHARE"
                     ]
                 }'>
             <header name="Content-Type" value="application/json"/>

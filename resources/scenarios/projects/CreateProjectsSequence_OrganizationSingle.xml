@@ -12,6 +12,7 @@
 
     <sender class="HttpSender">
         <target>http://${server.host}/rest/organizations/DefCode/projects</target>
+        <property name="storeCookies" value="true"/>
         <property name="method" value="POST"/>
     </sender>
 
@@ -28,7 +29,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/projects}/responseTime"/>
+                <property name="outputDir" value="${charts.dir:charts}/projects/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -46,7 +47,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/projects}/throughputStats"/>
+                <property name="outputDir" value="${charts.dir:charts}/projects/throughputStats"/>
             </destination>
         </reporter>
     </reporting>

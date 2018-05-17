@@ -1,15 +1,15 @@
 {
   "common":{
-    "doOrganizationTests":true,
-    "doProjectsTests":true,
+    "doOrganizationTests":false,
+    "doProjectsTests":false,
     "doCollectionsTests":true,
-    "doDocumentsTests":false,
-    "doProjectsOrganizationsTests":true,
-    "doCollectionsProjectsTests":false,
-    "doDocumentsCollectionsTests":false,
+    "doDocumentsTests":true,
+    "doProjectsOrganizationsTests":false,
+    "doCollectionsProjectsTests":true,
+    "doDocumentsCollectionsTests":true,
     "chartsDir":"charts",
     "server.host":"localhost:8080/lumeer-engine",
-    "threads.count": "10",
+    "threads.count":"4",
     "scenarios.rootDir":"resources/scenarios",
     "organizations.dir":"organizations",
     "projects.dir":"projects",
@@ -17,223 +17,270 @@
     "documents.dir":"documents"
   },
   "organizationsConf":{
-    "sequenceIterations":1000,
+    "sequenceIterations":100,
     "getAllIterations":300,
-    "simpleIterations":1000,
+    "simpleIterations":100,
     "dir":"organizations"
   },
   "projectsConf":{
     "sequenceIterations":30,
     "getAllIterations":300,
-    "simpleIterations":1000,
+    "simpleIterations":100,
     "dir":"projects"
   },
   "collectionsConf":{
     "sequenceIterations":30,
     "getAllIterations":300,
-    "simpleIterations":1000,
+    "simpleIterations":100,
     "dir":"collections"
   },
   "documentsConf":{
     "sequenceIterations":30,
     "getAllIterations":300,
-    "simpleIterations":1000,
+    "simpleIterations":100,
     "dir":"documents"
   },
   "organizationsTests":[
     {
       "file":"CreateOrganizationsSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"GetOrganizationsAll.xml",
-      "iterations.count":"getAllIterations"
+      "iterations.count":"getAllIterations",
+      "enabled": true
     },
     {
       "file":"GetOrganizationsSingle.xml",
-      "iterations.count":"simpleIterations"
+      "iterations.count":"simpleIterations",
+      "enabled": true
     },
     {
       "file":"GetOrganizationsSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"GetOrganizationsSinglePermissions.xml",
-      "iterations.count":"simpleIterations"
+      "iterations.count":"simpleIterations",
+      "enabled": true
     },
     {
       "file":"GetOrganizationsSequencePermissions.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"UpdateOrganizationsSingle.xml",
-      "iterations.count":"simpleIterations"
+      "iterations.count":"simpleIterations",
+      "enabled": true
     },
     {
       "file":"UpdateOrganizationsSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"UpdateOrganizationsSingle.xml",
-      "iterations.count":"simpleIterations"
+      "iterations.count":"simpleIterations",
+      "enabled": true
     },
     {
       "file":"UpdateOrganizationsSequence.xml",
-      "iterations.count":"sequenceIterations"
-    },
-    {
-      "file":"deleteOrganizationsSequence.xml",
       "iterations.count":"sequenceIterations",
-      "post-invade":"1"
-    }
-  ],
-  "projectsTests":[
-    {
-      "file":"CreateProjectsSequence_OrganizationSingle.xml",
-      "iterations.count":"sequenceIterations"
+      "enabled": true
     },
     {
-      "file":"GetProjectsAll_OrganizationSingle.xml",
-      "iterations.count":"getAllIterations"
-    },
-    {
-      "file":"GetProjectsSingle.xml",
-      "iterations.count":"simpleIterations"
-    },
-    {
-      "file":"GetProjectsSequence.xml",
-      "iterations.count":"sequenceIterations"
-    },
-    {
-      "file":"GetProjectsSinglePermissions.xml",
-      "iterations.count":"simpleIterations"
-    },
-    {
-      "file":"GetProjectsSequencePermissions.xml",
-      "iterations.count":"sequenceIterations"
-    },
-    {
-      "file":"updateProjectsSingle_OrganizationSingle.xml",
-      "iterations.count":"simpleIterations"
-    },
-    {
-      "file":"updateProjectsSequence.xml",
-      "iterations.count":"sequenceIterations"
-    },
-    {
-      "file":"updateProjectsSinglePermissions.xml",
-      "iterations.count":"simpleIterations"
-    },
-    {
-      "file":"UpdateProjectsSequencePermissions.xml",
-      "iterations.count":"sequenceIterations"
-    },
-    {
-      "file":"deleteOrganizationsSequence.xml",
+      "file":"DeleteOrganizationsSequence.xml",
       "iterations.count":"sequenceIterations",
-      "postponed":"1"
+      "enabled": true,
+      "postponed":"true"
     }
   ],
   "projectsOrganizationsTests":[
     {
       "file":"CreateProjectsSingle_OrganizationSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"GetProjectsAll_OrganizationSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"UpdateProjectsSingle_OrganizationSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
-      "file":"DeleteProjectsSequence_OrganizationSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "file":"DeleteProjectsSingle_OrganizationSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     }
   ],
-  "collectionsTests":[
+  "projectsTests":[
     {
-      "file":"CreateCollectionsSequence_ProjectSingle.xml",
-      "iterations.count":"sequenceIterations"
+      "file":"CreateProjectsSequence_OrganizationSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
-      "file":"GetCollectionsAll_ProjectSingle.xml",
-      "iterations.count":"getAllIterations"
+      "file":"GetProjectsAll_OrganizationSingle.xml",
+      "iterations.count":"getAllIterations",
+      "enabled": true
     },
     {
-      "file":"GetCollectionsSingle.xml",
-      "iterations.count":"simpleIterations"
+      "file":"GetProjectsSingle.xml",
+      "iterations.count":"simpleIterations",
+      "enabled": true
     },
     {
-      "file":"GetCollectionsSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "file":"GetProjectsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
-      "file":"GetCollectionsSinglePermissions.xml",
-      "iterations.count":"simpleIterations"
+      "file":"GetProjectsSinglePermissions.xml",
+      "iterations.count":"simpleIterations",
+      "enabled": true
     },
     {
-      "file":"GetCollectionsSequencePermissions.xml",
-      "iterations.count":"sequenceIterations"
+      "file":"GetProjectsSequencePermissions.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
-      "file":"UpdateCollectionsSingle_ProjectSingle.xml",
-      "iterations.count":"simpleIterations"
+      "file":"UpdateProjectsSingle_OrganizationSingle.xml",
+      "iterations.count":"simpleIterations",
+      "enabled": true
     },
     {
-      "file":"UpdateCollectionsSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "file":"UpdateProjectsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
-      "file":"UpdateCollectionsSinglePermissions.xml",
-      "iterations.count":"simpleIterations"
+      "file":"UpdateProjectsSinglePermissions.xml",
+      "iterations.count":"simpleIterations",
+      "enabled": true
     },
     {
-      "file":"UpdateCollectionsSequencePermissions.xml",
-      "iterations.count":"sequenceIterations"
+      "file":"UpdateProjectsSequencePermissions.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
-      "file":"DeleteCollectionsSequence_ProjectSingle.xml",
-      "iterations.count":"sequenceIterations"
+      "file":"DeleteProjectsSequence_OrganizationSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true,
+      "postponed":"true"
     }
   ],
   "collectionsProjectsTests":[
     {
       "file":"CreateCollectionsSingle_ProjectSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"GetCollectionsAll_ProjectSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"UpdateCollectionsSingle_ProjectSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": false
     },
     {
-      "file":"DeleteCollectionsSequence_OrganizationSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "file":"DeleteCollectionsSingle_ProjectSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": false
     }
   ],
-  "documentsTests":[
+  "collectionsTests":[
     {
       "file":"CreateCollectionsSequence_ProjectSingle.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"GetCollectionsAll_ProjectSingle.xml",
-      "iterations.count":"getAllIterations"
+      "iterations.count":"getAllIterations",
+      "enabled": true
+    },
+    {
+      "file":"GetCollectionsSingle_ProjectSingle.xml",
+      "iterations.count":"simpleIterations",
+      "enabled": true
+    },
+    {
+      "file":"GetCollectionsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"GetCollectionsSinglePermissions.xml",
+      "iterations.count":"simpleIterations",
+      "enabled": true
+    },
+    {
+      "file":"GetCollectionsSequencePermissions.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"UpdateCollectionsSingle_ProjectSingle.xml",
+      "iterations.count":"simpleIterations",
+      "enabled": true
+    },
+    {
+      "file":"UpdateCollectionsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"UpdateCollectionsSinglePermissions.xml",
+      "iterations.count":"simpleIterations",
+      "enabled": true
+    },
+    {
+      "file":"UpdateCollectionsSequencePermissions.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"DeleteCollectionsSequence_ProjectSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true,
+      "postponed":"true"
+    }
+  ],
+
+  "documentsTests":[
+    {
+      "file":"CreateCollectionsSequence_ProjectSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"GetCollectionsAll_ProjectSingle.xml",
+      "iterations.count":"getAllIterations",
+      "enabled": true
     }
   ],
   "documentsCollectionsTests":[
     {
       "file":"CreateDocumentsSingle_CollectionSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"GetDocumentsAll_CollectionSequence.xml",
-      "iterations.count":"sequenceIterations"
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     }
   ]
 }

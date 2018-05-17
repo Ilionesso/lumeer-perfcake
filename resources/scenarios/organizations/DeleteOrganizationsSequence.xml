@@ -9,7 +9,7 @@
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/organizations/DefCode@{num}</target>
+        <target>http://${server.host}/rest/organizations/DefCode@{num}</target>
         <property name="keepConnection"  value ="false"/>
         <property name="method" value="DELETE"/>
     </sender>
@@ -27,7 +27,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/organizations}/responseTime"/>
+                <property name="outputDir" value="${charts.dir:charts}/organizations/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -46,7 +46,7 @@
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/organizations}/throughputStats"/>
+                <property name="outputDir" value="${charts.dir:charts}/organizations/throughputStats"/>
             </destination>
         </reporter>
     </reporting>

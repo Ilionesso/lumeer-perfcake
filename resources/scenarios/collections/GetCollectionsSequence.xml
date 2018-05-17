@@ -30,7 +30,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/projects}/responseTime"/>
+                <property name="outputDir" value="${charts.dir:charts}/collections/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -48,7 +48,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts/projects}/throughputStats"/>
+                <property name="outputDir" value="${charts.dir:charts}/collections/throughputStats"/>
             </destination>
         </reporter>
     </reporting>

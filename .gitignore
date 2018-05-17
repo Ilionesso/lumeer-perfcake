@@ -1,3 +1,28 @@
+.idea
+**/target
+
+*.iml
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+*.log
+*.log.*
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+**/.DS_Store
+
+build.out
+
+
 LICENSE.txt
 lib/
 log4j2.xml
@@ -10,4 +35,6 @@ resources/scenarios/examples/
 resources/schemas/
 resources/xslt/
 charts/
-
+perftest.iml
+.idea/
+.vertx/

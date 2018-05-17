@@ -1,6 +1,6 @@
-./bin/perfcake.sh -s projects/CreateDocumentsSequence_CollectionsSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
+./bin/perfcake.sh -s projects/CreateDocumentsSequence_CollectionSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=30
 
-./bin/perfcake.sh -s projects/GetCollectionsAll_ProjectSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
+./bin/perfcake.sh -s projects/GetDocumentsAll_CollectionSingle.xml -Dserver.host=localhost:8080/lumeer-engine -Dthread.count=10 -Diterations.count=1000
 
 
 #WITH SEQUENCE OF COLLECTIONS

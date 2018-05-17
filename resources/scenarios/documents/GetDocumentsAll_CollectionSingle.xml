@@ -5,7 +5,7 @@
                   threads="${thread.count:10}"/>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents</target>
+        <target>http://${server.host}/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents</target>
         <property name="method" value="GET"/>
     </sender>
 

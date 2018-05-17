@@ -97,7 +97,7 @@ public class LumeerPerfRunner {
     private void organizationTests(){
         JSONObject testsConfig = (JSONObject) config.get("organizationsConf");
         JSONArray tests = (JSONArray) config.get("organizationsTests");
-        if (!doProjectsOrganizationsTests || !doProjectsTests){
+        if (!doProjectsOrganizationsTests){
             executeTestsArray(tests, testsConfig);
         }
         else {
@@ -111,7 +111,7 @@ public class LumeerPerfRunner {
     private void projectsTests(){
         JSONObject testsConfig = (JSONObject) config.get("projectsConf");
         JSONArray tests = (JSONArray) config.get("projectsTests");
-        if (!doCollectionsProjectsTests || !doCollectionsTests){
+        if (!doCollectionsProjectsTests){
             executeTestsArray(tests, testsConfig);
         }
         else {
@@ -125,7 +125,7 @@ public class LumeerPerfRunner {
     private void collectionsTests(){
         JSONObject testsConfig = (JSONObject) config.get("collectionsConf");
         JSONArray tests = (JSONArray) config.get("collectionsTests");
-        if (!doDocumentsCollectionsTests || !doDocumentsTests){
+        if (!doDocumentsCollectionsTests){
             executeTestsArray(tests, testsConfig);
         }
         else {
@@ -143,7 +143,7 @@ public class LumeerPerfRunner {
     }
 
     private void executeTest(JSONObject testsConfig, JSONObject test){
-        if ("false".equals(test.get("enabled"))) return;
+        if ((boolean) test.get("enabled") == false) return;
         long iterationsCount = (long) testsConfig.get(test.get("iterations.count"));
         String path = scenariosRootDir + "/" + testsConfig.get("dir") + "/" + test.get("file");
         executeTest(iterationsCount, path);
@@ -167,10 +167,11 @@ public class LumeerPerfRunner {
         JSONArray postponedTests = new JSONArray();
         for (int i = 0; i < tests.size(); i++){
             JSONObject test = (JSONObject) tests.get(i);
-            if (test.get("postponed") != "false")
-                executeTest(testsConfig, test);
-            else
+            if ("true".equals(test.get("postponed")))
                 postponedTests.add(test);
+            else
+                executeTest(testsConfig, test);
+
         }
         return postponedTests;
     }
