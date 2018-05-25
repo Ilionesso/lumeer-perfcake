@@ -2,19 +2,17 @@
 <scenario xmlns="urn:perfcake:scenario:7.0">
     <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
-                  threads="${thread.count:10}"/>
+                  threads="1"/>
     <sequences>
         <sequence class="FileLinesSequence" id="methodId">
-            <property name="fileUrl" value="resources/sequences/post-delete_methods.txt" />
+            <property name="fileUrl" value="resources/sequences/get-put_methods.txt" />
         </sequence>
-        <sequence class="FileLinesSequence" id="urlAppendix">
-            <property name="fileUrl" value="resources/sequences/organizations_post-delete_url.txt" />
-        </sequence>
+
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/rest/organizations/@{urlAppendix}</target>
-        <property name="method" value="methodId" />
+        <target>http://${server.host}/rest/organizations/DefCode</target>
+        <property name="dynamicMethod" value="@{methodId}" />
         <property name="keepConnection" value ="false" />
     </sender>
 
@@ -24,8 +22,8 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Each organization from collection -
-                                                Create -
+                <property name="name" value="Single organization -
+                                                Get and Update -
                                                 Response Time -
                                                 Thread Count: ${thread.count:10} -
                                                 Iterations: ${iterations.count:1000}"/>
@@ -42,8 +40,8 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Each organization from collection -
-                                                Create -
+                <property name="name" value="Single organization -
+                                                Get and Update -
                                                 Throughput Stats -
                                                 Thread Count: ${thread.count:10} -
                                                 Iterations: ${iterations.count:1000}"/>
@@ -55,14 +53,13 @@
     </reporting>
 
     <messages>
-        <message content ='{"code":"DefMixedCode","name":"DefName","icon":"DefUrl","color":"DefColor","permissions":null}'>
+        <message content ='{"code":"DefCode","name":"DefNameAlter","icon":"DefUrlAlter","color":"DefColorAlter","permissions":null}'>
             <header name="Content-Type" value="application/json"/>
-            <!--<header name="HTTPmethod" value="POST" />-->
         </message>
-        <message content ='{}'>
-            <header name="Content-Type" value="application/json"/>
-            <!--<header name="HTTPmethod" value="DELETE" />-->
-        </message>
+        <!--<message content =''>-->
+            <!--<header name="Content-Type" value="application/json"/>-->
+        <!--</message>-->
+
     </messages>
 
 </scenario>

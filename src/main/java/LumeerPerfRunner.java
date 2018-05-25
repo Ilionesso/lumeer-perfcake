@@ -142,7 +142,7 @@ public class LumeerPerfRunner {
             String url = "http://"+ serverHost + "/rest/organizations/DefCode/projects/DefProjectCode/collections/";
             new DocumentIdLoader().run(url,sequencesRootDir+"sequenceCollectionIds.txt", colectionIds);
             //execute documents postponed tests, then delete collections
-            executeOrPostPoneMixedTests(postponedDocumentsTests, testsConfig, documentsDir);
+            executeMixedTests(postponedDocumentsTests, testsConfig, documentsDir);
             executeTestsArray(postponedCollectionsTests, testsConfig);
         }
     }
