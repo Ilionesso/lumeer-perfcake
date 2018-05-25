@@ -55,7 +55,8 @@
                 "name": "aturing@lumeer.io",
                 "roles": [
                     "READ",
-                    "MANAGE"
+                    "MANAGE",
+                    "WRITE"
                     ]
                 }'>
             <header name="Content-Type" value="application/json"/>

@@ -14,7 +14,8 @@
 
     <sender class="HttpSender">
         <target>http://${server.host}/rest/organizations/@{urlAppendix}</target>
-        <property name="keepConnection" value ="false"/>
+        <property name="method" value="methodId" />
+        <property name="keepConnection" value ="false" />
     </sender>
 
     <reporting>
@@ -56,11 +57,11 @@
     <messages>
         <message content ='{"code":"DefMixedCode","name":"DefName","icon":"DefUrl","color":"DefColor","permissions":null}'>
             <header name="Content-Type" value="application/json"/>
-            <header name="HTTPmethod" value="POST" />
+            <!--<header name="HTTPmethod" value="POST" />-->
         </message>
         <message content ='{}'>
             <header name="Content-Type" value="application/json"/>
-            <header name="HTTPmethod" value="DELETE" />
+            <!--<header name="HTTPmethod" value="DELETE" />-->
         </message>
     </messages>
 

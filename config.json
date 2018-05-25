@@ -5,12 +5,13 @@
     "doCollectionsTests":true,
     "doDocumentsTests":true,
     "doProjectsOrganizationsTests":false,
-    "doCollectionsProjectsTests":true,
+    "doCollectionsProjectsTests":false,
     "doDocumentsCollectionsTests":true,
     "chartsDir":"charts",
     "server.host":"localhost:8080/lumeer-engine",
     "threads.count":"4",
     "scenarios.rootDir":"resources/scenarios",
+    "sequences.rootDir":"resources/sequences/",
     "organizations.dir":"organizations",
     "projects.dir":"projects",
     "collections.dir":"collections",
@@ -258,19 +259,6 @@
       "postponed":"true"
     }
   ],
-
-  "documentsTests":[
-    {
-      "file":"CreateCollectionsSequence_ProjectSingle.xml",
-      "iterations.count":"sequenceIterations",
-      "enabled": true
-    },
-    {
-      "file":"GetCollectionsAll_ProjectSingle.xml",
-      "iterations.count":"getAllIterations",
-      "enabled": true
-    }
-  ],
   "documentsCollectionsTests":[
     {
       "file":"CreateDocumentsSingle_CollectionSequence.xml",
@@ -280,6 +268,43 @@
     {
       "file":"GetDocumentsAll_CollectionSequence.xml",
       "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"UpdateDocumentsSingle_CollectionSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "postponed":"true",
+      "enabled": true
+    },
+    {
+      "file":"DeleteDocumentsSingle_CollectionSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "postponed":"true",
+      "enabled": true
+    }
+  ],
+
+  "documentsTests":[
+    {
+      "file":"CreateDocumentsSequence_CollectionSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"GetDocumentsAll_CollectionSingle.xml",
+      "iterations.count":"getAllIterations",
+      "enabled": true
+    },
+    {
+      "file":"UpdateDocumentsSequence_CollectionSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true,
+      "postponed":"true"
+    },
+    {
+      "file":"DeleteDocumentsSequence_CollectionSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "postponed":"true",
       "enabled": true
     }
   ]

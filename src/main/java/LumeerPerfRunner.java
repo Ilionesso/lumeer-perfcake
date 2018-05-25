@@ -12,6 +12,8 @@ import org.perfcake.ScenarioExecution;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
 
 public class LumeerPerfRunner {
@@ -24,6 +26,7 @@ public class LumeerPerfRunner {
     private String serverHost;
     private String threadsCount;
     private String scenariosRootDir;
+    private String sequencesRootDir;
 
     private String organizationsDir;
     private String projectsDir;
@@ -69,6 +72,7 @@ public class LumeerPerfRunner {
         serverHost = (String) common.get("server.host");
         threadsCount = (String) common.get("threads.count");
         scenariosRootDir = (String) common.get("scenarios.rootDir");
+        sequencesRootDir = (String) common.get("sequences.rootDir");
 
         doOrganizationTests = (boolean) common.get("doOrganizationTests");
         doProjectsTests = (boolean) common.get("doProjectsTests");
@@ -130,16 +134,55 @@ public class LumeerPerfRunner {
         }
         else {
             JSONArray documentsCollectionsTests = (JSONArray) config.get("documentsCollectionsTests");
-            JSONArray postponedTests = executeOrPostpone(tests, testsConfig);
-            executeMixedTests(documentsCollectionsTests, testsConfig, documentsDir);
-            executeTestsArray(postponedTests, testsConfig);
+            JSONArray postponedCollectionsTests = executeOrPostpone(tests, testsConfig); //postpone collections deleting
+            //postpone manipulating with ids
+            JSONArray postponedDocumentsTests = executeOrPostPoneMixedTests(documentsCollectionsTests, testsConfig, documentsDir);
+            //download ids
+            List<String> colectionIds = getCollectionIds((Long)testsConfig.get("sequenceIterations"));
+            String url = "http://"+ serverHost + "/rest/organizations/DefCode/projects/DefProjectCode/collections/";
+            new DocumentIdLoader().run(url,sequencesRootDir+"sequenceCollectionIds.txt", colectionIds);
+            //execute documents postponed tests, then delete collections
+            executeOrPostPoneMixedTests(postponedDocumentsTests, testsConfig, documentsDir);
+            executeTestsArray(postponedCollectionsTests, testsConfig);
         }
     }
 
     private void documentsTests(){
-        JSONObject testsConfig = (JSONObject) config.get("collectionsConf");
-        JSONArray tests = (JSONArray) config.get("collectionsTests");
-        executeTestsArray(tests, testsConfig);
+        JSONObject testsConfig = (JSONObject) config.get("documentsConf");
+        JSONArray tests = (JSONArray) config.get("documentsTests");
+        JSONArray postponedTests = executeOrPostpone(tests, testsConfig);
+        new DocumentIdLoader().run("http://"+ serverHost + "/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents",sequencesRootDir+"singleCollectionIds.txt");
+        executeTestsArray(postponedTests, testsConfig);
+    }
+
+
+
+
+
+
+
+    private void executeMixedTests(JSONArray invadorTests, JSONObject invadedTestConf, String invadorDir){
+        for (int i = 0; i < invadorTests.size(); i++) {
+            JSONObject test = (JSONObject) invadorTests.get(i);
+            long iterationCount = (long) invadedTestConf.get(test.get("iterations.count"));
+            String path = scenariosRootDir + "/" + invadorDir + "/" + test.get("file");
+            executeTest(iterationCount, path);
+        }
+    }
+
+    private JSONArray executeOrPostPoneMixedTests(JSONArray invadorTests, JSONObject invadedTestConf, String invadorDir){
+        JSONArray postponedTests = new JSONArray();
+        for (int i = 0; i < invadorTests.size(); i++) {
+            JSONObject test = (JSONObject) invadorTests.get(i);
+            if ("true".equals(test.get("postponed"))) {
+                postponedTests.add(test);
+                continue;
+            }
+            long iterationCount = (long) invadedTestConf.get(test.get("iterations.count"));
+            String path = scenariosRootDir + "/" + invadorDir + "/" + test.get("file");
+            executeTest(iterationCount, path);
+        }
+        return postponedTests;
     }
 
     private void executeTest(JSONObject testsConfig, JSONObject test){
@@ -176,18 +219,17 @@ public class LumeerPerfRunner {
         return postponedTests;
     }
 
-    private void executeMixedTests(JSONArray invadorTests, JSONObject invadedTestConf, String invadorDir){
-        for (int i = 0; i < invadorTests.size(); i++) {
-            JSONObject test = (JSONObject) invadorTests.get(i);
-            long iterationCount = (long) invadedTestConf.get(test.get("iterations.count"));
-            String path = scenariosRootDir + "/" + invadorDir + "/" + test.get("file");
-            executeTest(iterationCount, path);
-        }
-    }
-
     private void executeTestsArray(JSONArray tests, JSONObject testsConfig){
         for (int i = 0; i < tests.size(); i++)
             executeTest(testsConfig, (JSONObject) tests.get(i));
+    }
+
+    private List<String> getCollectionIds(long count){
+        LinkedList<String> ids = new LinkedList<>();
+        for (int i = 0; i < count; i++)
+            ids.add("DefColCode"+i);
+        return ids;
+
     }
 
 }

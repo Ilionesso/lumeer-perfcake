@@ -21,7 +21,7 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Organization collection -
+                <property name="name" value="All organizations -
                                                 Get -
                                                 Response Time -
                                                 Thread Count: ${thread.count:10} -
@@ -39,7 +39,7 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Organization collection -
+                <property name="name" value="All organizations -
                                                 Get -
                                                 Throughput stats -
                                                 Thread Count: ${thread.count:10} -
