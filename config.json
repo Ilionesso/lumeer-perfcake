@@ -93,6 +93,21 @@
       "enabled": true
     },
     {
+      "file":"Multi_CreateDelete_OrganizationsSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdate_OrganizationsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdate_OrganizationsSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
       "file":"DeleteOrganizationsSequence.xml",
       "iterations.count":"sequenceIterations",
       "enabled": true,
@@ -169,6 +184,21 @@
     },
     {
       "file":"UpdateProjectsSequencePermissions.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"Multi_CreateDelete_ProjectsSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdate_ProjectsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdate_ProjectsSingle.xml",
       "iterations.count":"sequenceIterations",
       "enabled": true
     },
@@ -253,6 +283,21 @@
       "enabled": true
     },
     {
+      "file":"Multi_CreateDelete_CollectionsSingle.xml",
+      "iterations.count":"singleIterations",
+      "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdate_CollectionsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdate_CollectionsSingle.xml",
+      "iterations.count":"singleIterations",
+      "enabled": true
+    },
+    {
       "file":"DeleteCollectionsSequence_ProjectSingle.xml",
       "iterations.count":"sequenceIterations",
       "enabled": true,
@@ -297,6 +342,48 @@
     },
     {
       "file":"UpdateDocumentsSequence_CollectionSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true,
+      "postponed":"true"
+    },
+    {
+      "file":"GetDocumentsSequence_CollectionSingle.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true,
+      "postponed":"true"
+    },
+    {
+      "file":"GetDocumentsSingle_CollectionSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true,
+      "postponed":"true"
+    },
+    {
+      "file":"GetDocumentsSingle_CollectionSingle.xml",
+      "iterations.count":"singleIterations",
+      "enabled": true,
+      "postponed":"true"
+    },
+    {
+      "file":"Multi_ReadUpdateDocumentsSingle_CollectionsSingle.xml",
+      "iterations.count":"singleIterations",
+      "enabled": true,
+      "postponed":"true"
+    },
+    {
+      "file":"UpdateDocumentsSingle_CollectionSingle.xml",
+      "iterations.count":"singleIterations",
+      "enabled": true,
+      "postponed":"true"
+    },
+    {
+      "file":"Multi_ReadUpdateDocumentsSequence_CollectionsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true,
+      "postponed":"true"
+    },
+    {
+      "file":"Multi_ReadUpdateDocumentsSequence_CollectionsSingle.xml",
       "iterations.count":"sequenceIterations",
       "enabled": true,
       "postponed":"true"

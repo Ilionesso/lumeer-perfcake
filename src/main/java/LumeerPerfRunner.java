@@ -151,7 +151,7 @@ public class LumeerPerfRunner {
         JSONObject testsConfig = (JSONObject) config.get("documentsConf");
         JSONArray tests = (JSONArray) config.get("documentsTests");
         JSONArray postponedTests = executeOrPostpone(tests, testsConfig);
-        new DocumentIdLoader().run("http://"+ serverHost + "/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents",sequencesRootDir+"singleCollectionIds.txt");
+        new DocumentIdLoader().run("http://"+ serverHost + "/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents",sequencesRootDir+"singleCollectionIds");
         executeTestsArray(postponedTests, testsConfig);
     }
 

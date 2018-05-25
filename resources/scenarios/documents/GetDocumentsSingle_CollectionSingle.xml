@@ -2,21 +2,17 @@
 <scenario xmlns="urn:perfcake:scenario:7.0">
     <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
-                  threads="1"/>
+                  threads="${thread.count:10}"/>
     <sequences>
-        <sequence class="PrimitiveNumberSequence" id="num" />
-        <sequence class="FileLinesSequence" id="methodId">
-            <property name="fileUrl" value="resources/sequences/get-put_methods.txt" />
-        </sequence>
-        <sequence class="FileLinesSequence" id="dataPostfix">
-            <property name="fileUrl" value="resources/sequences/dataPresents_url.txt" />
+        <sequence class="FileLinesSequence" id="docId">
+            <property name="fileUrl" value="resources/sequences/singleCollectionIdsFirst.txt" />
         </sequence>
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode@{num}@{dataPostfix}</target>
-        <property name="dynamicMethod" value="@{methodId}" />
-        <property name="keepConnection" value ="false" />
+        <target>http://${server.host}/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents/@{docId}</target>
+        <property name="keepConnection"  value ="false"/>
+        <property name="method" value="GET"/>
     </sender>
 
     <reporting>
@@ -25,8 +21,8 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Sequence of documents -
-                                                Get and Update -
+                <property name="name" value="Single document in a single collection -
+                                                Get -
                                                 Response Time -
                                                 Thread Count: ${thread.count:10} -
                                                 Iterations: ${iterations.count:1000}"/>
@@ -43,11 +39,12 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="time" value="1000"/>
-                <property name="name" value="Sequence of documents -
-                                                Create and Delete-
-                                                Throughput Stats -
+                <property name="name" value="Single document in a single collection -
+                                                Get -
+                                                Throughput stats -
                                                 Thread Count: ${thread.count:10} -
                                                 Iterations: ${iterations.count:1000}"/>
+                <property name="yAxis" value="Iteration/sec"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
                 <property name="outputDir" value="${charts.dir:charts}/documents/throughputStats"/>
@@ -56,13 +53,12 @@
     </reporting>
 
     <messages>
-        <message content ='{"keyU":"ValueS", "keyS":"valueR"}'>
+        <message content='{}'>
             <header name="Content-Type" value="application/json"/>
         </message>
-        <!--<message content =''>-->
-            <!--<header name="Content-Type" value="application/json"/>-->
-        <!--</message>-->
-
     </messages>
+
+
+
 
 </scenario>

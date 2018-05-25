@@ -23,7 +23,8 @@ public class DocumentIdLoader {
     public void run(String rawUrl, String filePath){
         String inline = loadInlineJson(rawUrl);
         List<String> ids = parseInline(inline);
-        writeToFile(filePath, ids);
+        writeToFile(filePath+".txt", ids);
+        writeToFile(filePath+"First.txt", ids.subList(0,1));
         Log.info("Document ids' downloaded");
     }
 
@@ -79,7 +80,7 @@ public class DocumentIdLoader {
         }
     }
 
-    public static void main(String[] args){
-        new DocumentIdLoader().run("http://localhost:8080/lumeer-engine/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents", sequencesRoot+"singleCollectionIds.txt");
-    }
+//    public static void main(String[] args){
+//        new DocumentIdLoader().run("http://localhost:8080/lumeer-engine/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents", sequencesRoot+"singleCollectionIds.txt");
+//    }
 }
