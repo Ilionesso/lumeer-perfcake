@@ -2,7 +2,7 @@
 <scenario xmlns="urn:perfcake:scenario:7.0">
     <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
-                  threads="1"/>
+                  threads="${thread.count:10}"/>
     <sequences>
         <sequence class="FileLinesSequence" id="dataPostfix">
             <property name="fileUrl" value="resources/sequences/dataPresents_url.txt" />
@@ -26,7 +26,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="Single collection -
                                                 Get and Update -
                                                 Response Time -
@@ -34,7 +34,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/collections/responseTime"/>
+                <property name="outputDir" value="charts/collections/Multi_ReadUpdateDocumentsSequence_CollectionsSingle/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -44,7 +44,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="Single document -
                                                 Create and Delete-
                                                 Throughput Stats -
@@ -52,7 +52,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/collections/throughputStats"/>
+                <property name="outputDir" value="charts/collections/Multi_ReadUpdateDocumentsSequence_CollectionsSingle/throughputStats"/>
             </destination>
         </reporter>
     </reporting>

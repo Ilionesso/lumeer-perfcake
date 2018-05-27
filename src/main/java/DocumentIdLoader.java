@@ -80,7 +80,7 @@ public class DocumentIdLoader {
         }
     }
 
-//    public static void main(String[] args){
-//        new DocumentIdLoader().run("http://localhost:8080/lumeer-engine/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents", sequencesRoot+"singleCollectionIds.txt");
-//    }
+    public static void main(String[] args){
+        new DocumentIdLoader().run("http://localhost:8080/lumeer-engine/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents", sequencesRoot+"singleCollectionIds.txt");
+    }
 }

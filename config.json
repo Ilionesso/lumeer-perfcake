@@ -1,11 +1,11 @@
 {
   "common":{
-    "doOrganizationTests":false,
-    "doProjectsTests":false,
+    "doOrganizationTests":true,
+    "doProjectsTests":true,
     "doCollectionsTests":true,
     "doDocumentsTests":true,
-    "doProjectsOrganizationsTests":false,
-    "doCollectionsProjectsTests":false,
+    "doProjectsOrganizationsTests":true,
+    "doCollectionsProjectsTests":true,
     "doDocumentsCollectionsTests":true,
     "chartsDir":"charts",
     "server.host":"localhost:8080/lumeer-engine",
@@ -18,27 +18,27 @@
     "documents.dir":"documents"
   },
   "organizationsConf":{
-    "sequenceIterations":100,
+    "sequenceIterations":1000,
     "getAllIterations":300,
-    "simpleIterations":100,
+    "simpleIterations":10000,
     "dir":"organizations"
   },
   "projectsConf":{
-    "sequenceIterations":30,
+    "sequenceIterations":1000,
     "getAllIterations":300,
-    "simpleIterations":100,
+    "simpleIterations":10000,
     "dir":"projects"
   },
   "collectionsConf":{
-    "sequenceIterations":30,
+    "sequenceIterations":1000,
     "getAllIterations":300,
-    "simpleIterations":100,
+    "simpleIterations":10000,
     "dir":"collections"
   },
   "documentsConf":{
-    "sequenceIterations":30,
+    "sequenceIterations":2000,
     "getAllIterations":300,
-    "simpleIterations":100,
+    "simpleIterations":5000,
     "dir":"documents"
   },
   "organizationsTests":[
@@ -94,7 +94,7 @@
     },
     {
       "file":"Multi_CreateDelete_OrganizationsSingle.xml",
-      "iterations.count":"sequenceIterations",
+      "iterations.count":"simpleIterations",
       "enabled": true
     },
     {
@@ -104,7 +104,7 @@
     },
     {
       "file":"Multi_ReadUpdate_OrganizationsSingle.xml",
-      "iterations.count":"sequenceIterations",
+      "iterations.count":"simpleIterations",
       "enabled": true
     },
     {
@@ -127,6 +127,11 @@
     },
     {
       "file":"UpdateProjectsSingle_OrganizationSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdate_ProjectsSingle_OrganizationSequence.xml",
       "iterations.count":"sequenceIterations",
       "enabled": true
     },
@@ -199,7 +204,7 @@
     },
     {
       "file":"Multi_ReadUpdate_ProjectsSingle.xml",
-      "iterations.count":"sequenceIterations",
+      "iterations.count":"simpleIterations",
       "enabled": true
     },
     {
@@ -223,12 +228,17 @@
     {
       "file":"UpdateCollectionsSingle_ProjectSequence.xml",
       "iterations.count":"sequenceIterations",
-      "enabled": false
+      "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdate_CollectionsSingle_ProjectSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true
     },
     {
       "file":"DeleteCollectionsSingle_ProjectSequence.xml",
       "iterations.count":"sequenceIterations",
-      "enabled": false
+      "enabled": true
     }
   ],
   "collectionsTests":[
@@ -284,7 +294,7 @@
     },
     {
       "file":"Multi_CreateDelete_CollectionsSingle.xml",
-      "iterations.count":"singleIterations",
+      "iterations.count":"simpleIterations",
       "enabled": true
     },
     {
@@ -294,7 +304,7 @@
     },
     {
       "file":"Multi_ReadUpdate_CollectionsSingle.xml",
-      "iterations.count":"singleIterations",
+      "iterations.count":"simpleIterations",
       "enabled": true
     },
     {
@@ -320,6 +330,12 @@
       "iterations.count":"sequenceIterations",
       "postponed":"true",
       "enabled": true
+    },
+    {
+      "file":"Multi_ReadUpdateDocumentsSequence_CollectionsSequence.xml",
+      "iterations.count":"sequenceIterations",
+      "enabled": true,
+      "postponed":"true"
     },
     {
       "file":"DeleteDocumentsSingle_CollectionSequence.xml",
@@ -360,25 +376,19 @@
     },
     {
       "file":"GetDocumentsSingle_CollectionSingle.xml",
-      "iterations.count":"singleIterations",
+      "iterations.count":"simpleIterations",
       "enabled": true,
       "postponed":"true"
     },
     {
       "file":"Multi_ReadUpdateDocumentsSingle_CollectionsSingle.xml",
-      "iterations.count":"singleIterations",
+      "iterations.count":"simpleIterations",
       "enabled": true,
       "postponed":"true"
     },
     {
       "file":"UpdateDocumentsSingle_CollectionSingle.xml",
-      "iterations.count":"singleIterations",
-      "enabled": true,
-      "postponed":"true"
-    },
-    {
-      "file":"Multi_ReadUpdateDocumentsSequence_CollectionsSequence.xml",
-      "iterations.count":"sequenceIterations",
+      "iterations.count":"simpleIterations",
       "enabled": true,
       "postponed":"true"
     },

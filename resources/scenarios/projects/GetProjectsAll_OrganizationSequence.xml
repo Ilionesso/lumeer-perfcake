@@ -23,7 +23,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="All projects from a sequence of organizations -
                                                 Get -
                                                 Response Time -
@@ -31,7 +31,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/projects/responseTime"/>
+                <property name="outputDir" value="charts/projects/GetProjectsAll_OrganizationSequence/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -41,7 +41,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="All projects from a sequence of organizations -
                                                 Get -
                                                 Throughput stats -
@@ -49,7 +49,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/projects/throughputStats"/>
+                <property name="outputDir" value="charts/projects/GetProjectsAll_OrganizationSequence/throughputStats"/>
             </destination>
         </reporter>
     </reporting>

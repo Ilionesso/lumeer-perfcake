@@ -5,7 +5,7 @@
                   threads="${thread.count:10}"/>
     <sequences>
         <sequence class="FileLinesSequence" id="docId">
-            <property name="fileUrl" value="resources/sequences/sequenceCollectionIdsFirst.txt" />
+            <property name="fileUrl" value="resources/sequences/singleCollectionIdsFirst.txt" />
         </sequence>
     </sequences>
 
@@ -20,7 +20,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="Single document in a single collection -
                                                 Update -
                                                 Response Time -
@@ -28,7 +28,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/documents/responseTime"/>
+                <property name="outputDir" value="charts/documents/UpdateDocumentsSingle_CollectionSingle/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -38,7 +38,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="Single document in a single collection -
                                                 Update -
                                                 Throughput stats -
@@ -47,7 +47,7 @@
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/documents/throughputStats"/>
+                <property name="outputDir" value="charts/documents/UpdateDocumentsSingle_CollectionSingle/throughputStats"/>
             </destination>
         </reporter>
     </reporting>

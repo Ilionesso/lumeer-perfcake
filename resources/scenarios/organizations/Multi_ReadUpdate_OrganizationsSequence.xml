@@ -2,9 +2,9 @@
 <scenario xmlns="urn:perfcake:scenario:7.0">
     <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
-                  threads="1"/>
+                  threads="${thread.count:10}"/>
     <sequences>
-        <>
+        <sequence class="PrimitiveNumberSequence" id="num" />
         <sequence class="FileLinesSequence" id="methodId">
             <property name="fileUrl" value="resources/sequences/get-put_methods.txt" />
         </sequence>
@@ -22,7 +22,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="Sequence of organizations -
                                                 Get and Update -
                                                 Response Time -
@@ -30,7 +30,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/organizations/responseTime"/>
+                <property name="outputDir" value="charts/organizations/Multi_ReadUpdate_OrganizationsSequence/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -40,7 +40,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="Single organization -
                                                 Get and Update -
                                                 Throughput Stats -
@@ -48,7 +48,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/organizations/throughputStats"/>
+                <property name="outputDir" value="charts/organizations/Multi_ReadUpdate_OrganizationsSequence/throughputStats"/>
             </destination>
         </reporter>
     </reporting>

@@ -2,20 +2,19 @@
 <scenario xmlns="urn:perfcake:scenario:7.0">
     <run type="iteration" value="${iterations.count:1000}"/>
     <generator class="DefaultMessageGenerator"
-                  threads="${thread.count:10}">
-        <!--<property name="senderTaskQueueSize" value="20"/>-->
-        <property name="shutdownPeriod" value="15000"/>
-    </generator>
-
+                  threads="${thread.count:10}"/>
     <sequences>
         <sequence class="PrimitiveNumberSequence" id="num" />
+        <sequence class="FileLinesSequence" id="methodId">
+            <property name="fileUrl" value="resources/sequences/get-put_methods.txt" />
+        </sequence>
+
     </sequences>
 
-
     <sender class="HttpSender">
-        <target>http://${server.host}/rest/organizations/DefCode/projects/DefProjectCode@{num}/collections</target>
-        <property name="keepConnection"  value ="false"/>
-        <property name="method" value="GET"/>
+        <target>http://${server.host}/rest/organizations/DefCode/projects/DefProjectCode@{num}/collections/DefColCode</target>
+        <property name="dynamicMethod" value="@{methodId}" />
+        <property name="keepConnection" value ="false" />
     </sender>
 
     <reporting>
@@ -24,14 +23,14 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="percentage" value="1"/>
-                <property name="name" value="All collections from a sequence of projects -
-                                                Get -
+                <property name="name" value="Sequence of collections -
+                                                Get and Update -
                                                 Response Time -
                                                 Thread Count: ${thread.count:10} -
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/collections/AllSeqGet/responseTime"/>
+                <property name="outputDir" value="charts/collections/Multi_ReadUpdate_CollectionsSingle_ProjectSequence/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -42,21 +41,26 @@
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
                 <period type="percentage" value="1"/>
-                <property name="name" value="All collections from a sequence of projects -
-                                                Get -
-                                                Throughput stats -
+                <property name="name" value="Sequence of organizations -
+                                                Get and Update -
+                                                Throughput Stats -
                                                 Thread Count: ${thread.count:10} -
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/collections/AllSeqGet/throughputStats"/>
+                <property name="outputDir" value="charts/collections/Multi_ReadUpdate_CollectionsSingle_ProjectSequence/throughputStats"/>
             </destination>
         </reporter>
     </reporting>
 
     <messages>
-        <message content="{}" >
+        <message content ='{"code":"DefColCode@{num}","name":"DefColNameAlter","icon":"DefUrlAlter","color":"DefColorAlter","permissions":null}'>
             <header name="Content-Type" value="application/json"/>
         </message>
+        <!--<message content =''>-->
+            <!--<header name="Content-Type" value="application/json"/>-->
+        <!--</message>-->
+
     </messages>
+
 </scenario>

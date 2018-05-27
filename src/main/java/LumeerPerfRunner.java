@@ -161,11 +161,11 @@ public class LumeerPerfRunner {
 
 
 
-    private void executeMixedTests(JSONArray invadorTests, JSONObject invadedTestConf, String invadorDir){
-        for (int i = 0; i < invadorTests.size(); i++) {
-            JSONObject test = (JSONObject) invadorTests.get(i);
+    private void executeMixedTests(JSONArray invaderTests, JSONObject invadedTestConf, String invaderDir){
+        for (int i = 0; i < invaderTests.size(); i++) {
+            JSONObject test = (JSONObject) invaderTests.get(i);
             long iterationCount = (long) invadedTestConf.get(test.get("iterations.count"));
-            String path = scenariosRootDir + "/" + invadorDir + "/" + test.get("file");
+            String path = scenariosRootDir + "/" + invaderDir + "/" + test.get("file");
             executeTest(iterationCount, path);
         }
     }

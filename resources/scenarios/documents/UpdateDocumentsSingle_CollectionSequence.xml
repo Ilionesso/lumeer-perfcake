@@ -4,13 +4,14 @@
     <generator class="DefaultMessageGenerator"
                   threads="${thread.count:10}"/>
     <sequences>
+        <sequence class="PrimitiveNumberSequence" id="num" />
         <sequence class="FileLinesSequence" id="docId">
             <property name="fileUrl" value="resources/sequences/sequenceCollectionIds.txt" />
         </sequence>
     </sequences>
 
     <sender class="HttpSender">
-        <target>http://${server.host}/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode/documents/@{docId}/data</target>
+        <target>http://${server.host}/rest/organizations/DefCode/projects/DefProjectCode/collections/DefColCode@{num}/documents/@{docId}/data</target>
         <property name="keepConnection"  value ="false"/>
         <property name="method" value="PUT"/>
     </sender>
@@ -20,7 +21,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="Sequence of documents in a single collection -
                                                 Update -
                                                 Response Time -
@@ -28,7 +29,7 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/documents/responseTime"/>
+                <property name="outputDir" value="charts/documents/UpdateDocumentsSingle_CollectionSequence/responseTime"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -38,7 +39,7 @@
             <property name="minimumEnabled" value="false"/>
             <property name="maximumEnabled" value="false"/>
             <destination class="ChartDestination">
-                <period type="time" value="1000"/>
+                <period type="percentage" value="1"/>
                 <property name="name" value="Sequence of documents in a single collection -
                                                 Update -
                                                 Throughput stats -
@@ -47,7 +48,7 @@
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="${charts.dir:charts}/documents/throughputStats"/>
+                <property name="outputDir" value="charts/documents/UpdateDocumentsSingle_CollectionSequence/throughputStats"/>
             </destination>
         </reporter>
     </reporting>
