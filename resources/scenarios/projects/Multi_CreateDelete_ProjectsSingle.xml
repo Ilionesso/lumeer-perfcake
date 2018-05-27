@@ -32,7 +32,8 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/projects/Multi_CreateDelete_ProjectsSingle/responseTime"/>
+                <property name="outputDir" value="charts/projects/responseTime"/>
+				<property name="autoCombine" value="false"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="time" value="1000"/>
@@ -50,7 +51,8 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/projects/Multi_CreateDelete_ProjectsSingle/throughputStats"/>
+                <property name="outputDir" value="charts/projects/throughputStats"/>
+				<property name="autoCombine" value="false"/>
             </destination>
         </reporter>
     </reporting>
