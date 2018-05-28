@@ -97,7 +97,7 @@ public class LumeerPerfRunner {
         if (doDocumentsTests) documentsTests();
     }
 
-
+    //Runs organizations tests. If mixed projectsOrganizations tests must be executed, execute them before postponed organizations' deleting
     private void organizationTests(){
         JSONObject testsConfig = (JSONObject) config.get("organizationsConf");
         JSONArray tests = (JSONArray) config.get("organizationsTests");
@@ -112,6 +112,7 @@ public class LumeerPerfRunner {
         }
     }
 
+    //Runs projects tests. If mixed collectionsProjects tests must be executed, execute them before postponed projects' deleting
     private void projectsTests(){
         JSONObject testsConfig = (JSONObject) config.get("projectsConf");
         JSONArray tests = (JSONArray) config.get("projectsTests");
@@ -126,6 +127,8 @@ public class LumeerPerfRunner {
         }
     }
 
+    //Runs projects tests. If mixed collectionsProjects tests must be executed, execute them before postponed collections' deleting.
+    // Also downloads documents ids before executing postponed documentsCollections tests, that need them.
     private void collectionsTests(){
         JSONObject testsConfig = (JSONObject) config.get("collectionsConf");
         JSONArray tests = (JSONArray) config.get("collectionsTests");
@@ -147,6 +150,7 @@ public class LumeerPerfRunner {
         }
     }
 
+    //Runs projects tests. Also downloads documents ids before executing postponed documentsCollections tests, that need them.
     private void documentsTests(){
         JSONObject testsConfig = (JSONObject) config.get("documentsConf");
         JSONArray tests = (JSONArray) config.get("documentsTests");

@@ -19,7 +19,7 @@ public class DocumentIdLoader {
     private Scanner scanner;
     private static final String sequencesRoot = "resources/sequences/";
 
-
+    //Downloads ids of documents from specified collection. Makes a file with all ids and a file with the first id.
     public void run(String rawUrl, String filePath){
         String inline = loadInlineJson(rawUrl);
         List<String> ids = parseInline(inline);
@@ -28,6 +28,7 @@ public class DocumentIdLoader {
         Log.info("Document ids' downloaded");
     }
 
+    //Downloads ids of documents from sequence of collections. Makes a file with all ids.
     public void run(String rawProjectCollectionsUrl, String filePath, List<String> collectionCodes){
         LinkedList<String> inlines = collectionCodes.stream()
                 .map(code -> loadInlineJson(rawProjectCollectionsUrl+code+"/documents"))
@@ -38,7 +39,7 @@ public class DocumentIdLoader {
         writeToFile(filePath, ids);
     }
 
-
+    //Loads a specified json
     private String loadInlineJson(String rawUrl){
         String inline = "";
         try {
@@ -61,6 +62,7 @@ public class DocumentIdLoader {
         return inline;
     }
 
+    //Takes ids from row json array of documents
     private List<String> parseInline(String inline){
         LinkedList<String> ids = new LinkedList<>();
         String[] firstLvl = inline.split("\"_id\":\""); //each document id follows after that
