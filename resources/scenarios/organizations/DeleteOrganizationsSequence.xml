@@ -27,8 +27,8 @@
                                                 Iterations: ${iterations.count:1000}"/>
                 <property name="yAxis" value="Response Time [ms]"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/organizations/responseTime"/>
-				<property name="autoCombine" value="false"/>
+                <property name="outputDir" value="charts/organizations/DeleteOrganizationsSequence/responseTime"/>
+				<property name="autoCombine" value="true"/>
             </destination>
             <destination class="ConsoleDestination">
                 <period type="percentage" value="1"/>
@@ -47,8 +47,8 @@
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="yAxis" value="Iteration/sec"/>
                 <property name="attributes" value="Result,Average"/>
-                <property name="outputDir" value="charts/organizations/throughputStats"/>
-				<property name="autoCombine" value="false"/>
+                <property name="outputDir" value="charts/organizations/DeleteOrganizationsSequence/throughputStats"/>
+				<property name="autoCombine" value="true"/>
             </destination>
         </reporter>
     </reporting>
